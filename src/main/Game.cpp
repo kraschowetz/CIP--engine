@@ -68,9 +68,7 @@ void Game::start()
     root = new Node();
 
     // dbg//
-    Chunk::collisions.push_back(
-        new Collider()
-    );
+    
 
     //entity setup
     e = new Node();
@@ -86,6 +84,22 @@ void Game::start()
     root->addChild(col);
     col->addChild(c);
     col->translate(Vector2(0.f, 400.f));
+
+    //create 5x5 chunk grid
+    for(int x = 0; x < 5; x++)
+    {
+        World::chunks.push_back
+        (
+            std::vector<Chunk>()
+        );
+        for(int y = 0; y < 5; y++)
+        {
+            World::chunks.at(x).push_back(Chunk());
+        }
+
+    }
+    //add collision to chunk
+    World::chunks.at(0).at(0).collisions.push_back(c);
     ////
     run();
 }

@@ -1,7 +1,7 @@
 #include "Collider.h"
 
-std::vector<Collider*> Chunk::collisions;
-std::vector<std::vector<Chunk*>> World::chunks;
+int World::chunkSize = 256;
+std::vector<std::vector<Chunk>> World::chunks;
 
 Collider::Collider()
 {
@@ -164,7 +164,7 @@ Vector2 Collider::getCenter()
     return this->centerPosition;
 }
 
-SDL_Rect *Collider::getShape()
+SDL_Rect * Collider::getShape()
 {
     return &this->shape;
 }

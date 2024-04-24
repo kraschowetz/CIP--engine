@@ -12,10 +12,10 @@ class Collider : public Node
         bool isTrigger = false;
         bool isActive = true;
         Vector2 centerPosition;
-        Entity* entity;
+        Entity * entity;
     //getters
     public:
-        SDL_Rect* getShape();
+        SDL_Rect * getShape();
         Vector2 getCenter();
     // methods
     public:
@@ -26,16 +26,17 @@ class Collider : public Node
         void translate(Vector2 to) override;
         void setIsTrigger(bool _t);
         void setIsStatic(bool _s);
-        bool isColliding(Collider *other);
         void render(SDL_Renderer* r);
+        bool isColliding(Collider *other);
 };
 
 struct Chunk
 {   
-    static std::vector<Collider*> collisions;  
+    std::vector<Collider*> collisions;  
 };
 
 struct World
 {
-    static std::vector<std::vector<Chunk*>> chunks;
+    static int chunkSize;
+    static std::vector<std::vector<Chunk>> chunks;
 };
